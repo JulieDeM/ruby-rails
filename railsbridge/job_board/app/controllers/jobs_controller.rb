@@ -7,7 +7,7 @@ class JobsController < ApplicationController
   end
   def create
   p "In the create method!!!!!!"
-  Job.create(job_params)
+  job = Job.create(job_params)
   p job
   redirect_to jobs_path
 end
@@ -18,5 +18,6 @@ def job_params
   params.require(:job).permit(:title, :description)
 end
 def edit
+  @job = Job.find(params[:id])
 end
 end
